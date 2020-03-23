@@ -18,7 +18,7 @@ COPY daemon.json /etc/docker/daemon.json
 
 # 安装 Maven
 WORKDIR /usr/local
-COPY wget https://mirror.bit.edu.cn/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz
+RUN wget https://mirror.bit.edu.cn/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz
 RUN tar -zxvf apache-maven-3.5.4-bin.tar.gz -C /usr/local/
 RUN mv /usr/local/apache-maven-3.5.4/conf/settings.xml /usr/local/apache-maven-3.5.4/conf/settings.xml.bak
 RUN rm apache-maven-3.5.4-bin.tar.gz
