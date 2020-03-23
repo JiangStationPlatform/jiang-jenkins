@@ -1,0 +1,17 @@
+version: '3.1'
+services:
+  jenkins:
+    image: 'jiang-jenkins'
+    restart: always
+    container_name: jiang-jenkins
+    privileged: true
+    ports:
+      - 50000:50000
+      - 9001:8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./jenkins_home:/var/jenkins_home
+    networks:
+      - jenkins_network
+networks:
+  jenkins_network:
