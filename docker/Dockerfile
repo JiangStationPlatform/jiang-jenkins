@@ -13,14 +13,15 @@ RUN yum install -y wget yum-utils device-mapper-persistent-data lvm2 && \
 WORKDIR /usr/local/bin
 RUN wget https://raw.githubusercontent.com/topsale/resources/master/docker/docker-compose
 RUN chmod +x docker-compose
-#COPY daemon.json /etc/docker/daemon.json
+COPY daemon.json /etc/docker/daemon.json
 
 
 # 安装 Maven
 WORKDIR /usr/local
-COPY apache-maven-3.5.4-bin.tar.gz /usr/local
+COPY wget https://mirror.bit.edu.cn/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz
 RUN tar -zxvf apache-maven-3.5.4-bin.tar.gz -C /usr/local/
 RUN mv /usr/local/apache-maven-3.5.4/conf/settings.xml /usr/local/apache-maven-3.5.4/conf/settings.xml.bak
+RUN rm apache-maven-3.5.4-bin.tar.gz
 COPY settings.xml /usr/local/apache-maven-3.5.4/conf
 
 # 配置环境变量
